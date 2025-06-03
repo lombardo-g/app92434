@@ -38,7 +38,7 @@ jobs:
       echo "THESE ARE ALL THE FILES";
       find . -maxdepth 3;
       echo "MOVE BUILDPY BACK";
-      sudo mv ./docker-mendix-buildpack-6.0.1/build.py ./docker-mendix-buildpack-6.0.1/scripts/
+      sudo mv ./docker-mendix-buildpack-6.0.1/build.py ./docker-mendix-buildpack-6.0.1/scripts/;
       echo "BUILDING WITH BUILD.PY";
       sudo ./docker-mendix-buildpack-6.0.1/scripts/build.py --source ./ --destination ./mda/ build-mda-dir;
       echo "BUILDING WITH DOCKERBUILD";
