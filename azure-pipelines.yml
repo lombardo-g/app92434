@@ -42,9 +42,9 @@ jobs:
       echo "BUILDING WITH BUILD.PY";
       cd docker-mendix-buildpack-6.0.0;
       echo "is there buildpy?";
-      ls
+      ls;
       mkdir mda;
-      ls
+      ls;
       sudo /build.py --source ../ --destination ./mda/ build-mda-dir;
       ls /mda;
       echo "BUILDING WITH DOCKERBUILD";
