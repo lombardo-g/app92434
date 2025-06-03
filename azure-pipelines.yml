@@ -24,7 +24,6 @@ jobs:
 #      sudo docker push lombardog/mendix-rootfs1:builder;
 
 
-
 - job: appbuild
   pool:
     vmImage: 'ubuntu-latest'
@@ -33,11 +32,10 @@ jobs:
       sudo apt install curl zip unzip tar bzip2 -y; 
       wget -O buildpack.zip $(DOCKER_BUILDPACK_URL);
       unzip buildpack.zip;
-      sudo mv docker-mendix-buildpack*/* . ;
+      sudo mv docker-mendix-buildpack*/* .;
       pwd;
       find . -maxdepth 3 -type d;
       sudo ./build.py --source ./ --destination ./mda/ build-mda-dir;
       sudo docker build --build-arg ROOTFS_IMAGE=lombardog/mendix-rootfs1:app --build-arg BUILDER_ROOTFS_IMAGE=lombardog/mendix-rootfs1:builder --tag lombardog/$(MENDIXAPPNAME):1.0.0 ./mda/;
-      #sudo docker build --build-arg BUILD_PATH=. -t lombardog/$(MENDIXAPPNAME):$TAG . ;
       sudo docker login -u $(DOCKER_LOGIN) -p $(DOCKER_PASSWORD);
-      sudo docker push lombardog/$IMAGE_NAME:$TAG;
+      sudo docker push lombardog/$(MENDIXAPPNAME):1.0.0;
