@@ -41,9 +41,12 @@ jobs:
       python3 --version;
       echo "BUILDING WITH BUILD.PY";
       cd docker-mendix-buildpack-6.0.0;
+      echo "is there buildpy?";
+      ls
       mkdir mda;
+      ls
       sudo /build.py --source ../ --destination ./mda/ build-mda-dir;
-      ls /mda
+      ls /mda;
       echo "BUILDING WITH DOCKERBUILD";
       docker build --build-arg ROOTFS_IMAGE=lombardog/mendix-rootfs1:app --build-arg BUILDER_ROOTFS_IMAGE=lombardog/mendix-rootfs1:builder --tag lombardog/$(MENDIXAPPNAME):1.0.0 ./mda/;
       echo "LOGIN TO DOCKER";
