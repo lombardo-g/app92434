@@ -37,15 +37,13 @@ jobs:
       pwd;
       echo "THESE ARE ALL THE FILES and DIRECTORIES";
       find . -maxdepth 3;
-      echo "MOVE BUILDPY BACK";
-      python3 --version;
       echo "BUILDING WITH BUILD.PY";
-      cd docker-mendix-buildpack-6.0.0;
-      echo "is there buildpy?";
-      ls;
+      cd docker-mendix-buildpack-6.0.1;
+      echo "IS THERE A PY AND MDA DIR?";
       mkdir mda;
       ls;
       sudo ./build.py --source ../ --destination ./mda/ build-mda-dir;
+      echo "IS THERE MDA????";
       ls ./mda;
       ls;
       echo "BUILDING WITH DOCKERBUILD";
