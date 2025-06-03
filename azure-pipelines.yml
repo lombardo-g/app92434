@@ -35,7 +35,7 @@ jobs:
       echo "THESE ARE ALL THE FILES and DIRECTORIES";
       find . -maxdepth 3;
       echo "BUILDING WITH BUILD.PY";
-      cd docker-mendix-buildpack-6.0.1;
+      cd $(dockerdirectory);
       echo "IS THERE A PY AND MDA DIR?";
       mkdir mda;
       ls;
@@ -43,7 +43,8 @@ jobs:
       echo "IS THERE MDA??";  
       ls ./mda/;
       echo "BUILDING WITH DOCKERBUILD";
-      sudo docker build --build-arg ROOTFS_IMAGE=lombardog/mendix-rootfs1:app --build-arg BUILDER_ROOTFS_IMAGE=lombardog/mendix-rootfs1:builder --tag lombardog/$(MENDIXAPPNAME):1.0.0 ./mda/;
+      cd ..
+      sudo docker build --build-arg ROOTFS_IMAGE=lombardog/mendix-rootfs1:app --build-arg BUILDER_ROOTFS_IMAGE=lombardog/mendix-rootfs1:builder --tag lombardog/$(MENDIXAPPNAME):1.0.0 $(dockerdirectory)/mda/;
       echo "LOGIN TO DOCKER";
       sudo docker login -u $(DOCKER_LOGIN) -p $(DOCKER_PASSWORD);
       echo "PUSHING TO DOCKER";
