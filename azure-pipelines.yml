@@ -45,11 +45,9 @@ jobs:
       sudo ./build.py --source ../ --destination ./mda/ build-mda-dir;
       echo "IS THERE MDA??";  
       ls ./mda/;
-      echo "IS THERE dockerfile??";
-      ls;
       echo "BUILDING WITH DOCKERBUILD";
-      docker build --build-arg ROOTFS_IMAGE=lombardog/mendix-rootfs1:app --build-arg BUILDER_ROOTFS_IMAGE=lombardog/mendix-rootfs1:builder --tag lombardog/$(MENDIXAPPNAME):1.0.0 ./mda/;
+      sudo docker build --build-arg ROOTFS_IMAGE=lombardog/mendix-rootfs1:app --build-arg BUILDER_ROOTFS_IMAGE=lombardog/mendix-rootfs1:builder --tag lombardog/$(MENDIXAPPNAME):1.0.0 ./mda/;
       echo "LOGIN TO DOCKER";
-      docker login -u $(DOCKER_LOGIN) -p $(DOCKER_PASSWORD);
+      sudo docker login -u $(DOCKER_LOGIN) -p $(DOCKER_PASSWORD);
       echo "PUSHING TO DOCKER";
-      docker push lombardog/$(MENDIXAPPNAME):1.0.0;
+      sudo docker push lombardog/$(MENDIXAPPNAME):1.0.0;
