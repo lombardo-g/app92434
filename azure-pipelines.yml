@@ -40,6 +40,7 @@ jobs:
       echo "MOVE BUILDPY BACK";
       sudo mv ./docker-mendix-buildpack-6.0.1/build.py ./docker-mendix-buildpack-6.0.1/scripts/;
       echo "BUILDING WITH BUILD.PY";
+      mkdir mda
       sudo ./docker-mendix-buildpack-6.0.1/scripts/build.py --source ./ --destination ./mda/ build-mda-dir;
       echo "BUILDING WITH DOCKERBUILD";
       docker build --build-arg ROOTFS_IMAGE=lombardog/mendix-rootfs1:app --build-arg BUILDER_ROOTFS_IMAGE=lombardog/mendix-rootfs1:builder --tag lombardog/$(MENDIXAPPNAME):1.0.0 ./mda/;
