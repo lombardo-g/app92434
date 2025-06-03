@@ -32,9 +32,6 @@ jobs:
       sudo apt install curl zip unzip tar bzip2 -y; 
       wget -O buildpack.zip $(DOCKER_BUILDPACK_URL);
       unzip buildpack.zip;
-      echo "MOVINGDOCKER"
-      sudo mv docker-mendix-buildpack*/* .;
-      pwd;
       echo "THESE ARE ALL THE FILES and DIRECTORIES";
       find . -maxdepth 3;
       echo "BUILDING WITH BUILD.PY";
