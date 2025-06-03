@@ -32,10 +32,16 @@ jobs:
       sudo apt install curl zip unzip tar bzip2 -y; 
       wget -O buildpack.zip $(DOCKER_BUILDPACK_URL);
       unzip buildpack.zip;
+      echo "MOVINGDOCKER"
       sudo mv docker-mendix-buildpack*/* .;
       pwd;
+      echo "THIS IS MY WHERE WE ARE";
       find . -maxdepth 3 -type d;
+      echo "BUILDING WITH BUILD.PY";
       sudo ./build.py --source ./ --destination ./mda/ build-mda-dir;
+      echo "BUILDING WITH DOCKERBUILD";
       sudo docker build --build-arg ROOTFS_IMAGE=lombardog/mendix-rootfs1:app --build-arg BUILDER_ROOTFS_IMAGE=lombardog/mendix-rootfs1:builder --tag lombardog/$(MENDIXAPPNAME):1.0.0 ./mda/;
+      echo "LOGIN TO DOCKER";
       sudo docker login -u $(DOCKER_LOGIN) -p $(DOCKER_PASSWORD);
+      echo "PUSHING TO DOCKER";
       sudo docker push lombardog/$(MENDIXAPPNAME):1.0.0;
