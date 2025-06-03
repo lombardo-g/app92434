@@ -13,12 +13,12 @@ jobs:
     vmImage: 'ubuntu-latest'
   steps:
   - script: 
-    sudo apt install curl zip unzip tar bzip2 -y;
-    wget -O buildpack.zip $(DOCKER_BUILDPACK_URL);
-    unzip buildpack.zip;
-    sudo mv docker-mendix-buildpack*/* . ;
-    docker build -t mendix-rootfs1:app -f rootfs-builder.dockerfile .;
-    docker build -t mendix-rootfs1:builder -f rootfs-app.dockerfile .;
-    sudo docker login -u $(DOCKER_LOGIN) -p $(DOCKER_PASSWORD);
-    sudo docker push mendix-rootfs1:app;
-    sudo docker push mendix-rootfs1:builder;
+      sudo apt install curl zip unzip tar bzip2 -y;
+      wget -O buildpack.zip $(DOCKER_BUILDPACK_URL);
+      unzip buildpack.zip;
+      sudo mv docker-mendix-buildpack*/* . ;
+      docker build -t mendix-rootfs1:app -f rootfs-builder.dockerfile .;
+      docker build -t mendix-rootfs1:builder -f rootfs-app.dockerfile .;
+      sudo docker login -u $(DOCKER_LOGIN) -p $(DOCKER_PASSWORD);
+      sudo docker push mendix-rootfs1:app;
+      sudo docker push mendix-rootfs1:builder;
