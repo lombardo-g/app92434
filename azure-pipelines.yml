@@ -40,7 +40,7 @@ jobs:
       echo "MOVE BUILDPY BACK";
       python3 --version;
       echo "BUILDING WITH BUILD.PY";
-      cd docker-mendix-buildpack-6.0.0
+      cd docker-mendix-buildpack-6.0.0;
       mkdir mda;
       sudo /build.py --source ../ --destination ./mda/ build-mda-dir;
       ls /mda
