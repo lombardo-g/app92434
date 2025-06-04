@@ -17,8 +17,8 @@ jobs:
       wget -O buildpack.zip $(DOCKER_BUILDPACK_URL);
       unzip buildpack.zip;
       sudo mv docker-mendix-buildpack*/* . ;
-      docker build -t lombardog/mendix-rootfs1:app -f rootfs-builder.dockerfile .;
-      docker build -t lombardog/mendix-rootfs1:builder -f rootfs-app.dockerfile .;
+      docker build -t lombardog/mendix-rootfs1:app -f rootfs-app.dockerfile .;
+      docker build -t lombardog/mendix-rootfs1:builder -f rootfs-builder.dockerfile .;
       sudo docker login -u $(DOCKER_LOGIN) -p $(DOCKER_PASSWORD);
       sudo docker push lombardog/mendix-rootfs1:app;
       sudo docker push lombardog/mendix-rootfs1:builder;
