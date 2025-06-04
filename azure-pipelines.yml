@@ -28,8 +28,8 @@ jobs:
       echo "ALL FILES HERE??";  
       find ./buildoutput/ -maxdepth 2;
       echo "BUILDING WITH DOCKERBUILD";
-      sudo docker build --build-arg ROOTFS_IMAGE=lombardog/mendix-rootfs1:app --build-arg BUILDER_ROOTFS_IMAGE=lombardog/mendix-rootfs1:builder --tag lombardog/$(MENDIXAPPNAME):0.0.1 buildoutput/;
+      sudo docker build --build-arg ROOTFS_IMAGE=lombardog/mendix-rootfs1:app --build-arg BUILDER_ROOTFS_IMAGE=lombardog/mendix-rootfs1:builder --tag lombardog/$(MENDIXAPPNAME):$(TAG) buildoutput/;
       echo "LOGIN TO DOCKER";
       sudo docker login -u $(DOCKER_LOGIN) -p $(DOCKER_PASSWORD);
       echo "PUSHING TO DOCKER";
-      sudo docker push lombardog/$(MENDIXAPPNAME):1.0.0;
+      sudo docker push lombardog/$(MENDIXAPPNAME):$(TAG);
